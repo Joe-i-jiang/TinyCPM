@@ -4,13 +4,20 @@
 /**
  * 初始化
  * 1.配置包含配置文件上（字体，界面风格，勾选数据等）
- * 2.数管理
+ * 2.数据管理
  */
 AppManager::AppManager() {
-    //配置
-    confmanager.init();
+    init();
+}
 
-    //
+int AppManager::init() {
+     //配置
+    confmanager = new ConfigManager();
+    confmanager->init();
+
+    //数据管理初始化
+    datamanager = new DataManager();
+    datamanager->init();
 }
 
 void AppManager::Run() {

@@ -19,4 +19,17 @@ typedef struct {
 } UsedData;
 
 
+/**
+ * DataManager
+ * 负责整个数据模块的控制，以及基础数据的控制
+ */
+class DataManager {
+public:
+    DataManager();
+    ~DataManager();
+
+    int init();
+private:
+
+};
 
