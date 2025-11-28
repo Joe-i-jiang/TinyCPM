@@ -25,11 +25,17 @@ typedef struct {
  */
 class DataManager {
 public:
+    static DataManager* create();
+    static void destroy();
+
+    // 禁用拷贝构造和赋值操作
+    DataManager(const DataManager&) = delete;
+    DataManager& operator=(const DataManager&) = delete;
+
+private:
     DataManager();
     ~DataManager();
-
+    
     int init();
-private:
-
 };
 

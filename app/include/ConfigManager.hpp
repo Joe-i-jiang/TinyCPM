@@ -6,10 +6,12 @@
  */
 class ConfigManager {
 public:
-    ConfigManager();
-    ~ConfigManager();
+    static ConfigManager* create();
+    static void destroy();
 
-    int init();
+    // 禁用拷贝构造和赋值操作
+    ConfigManager(const ConfigManager&) = delete;
+    ConfigManager& operator=(const ConfigManager&) = delete;
 
 public:
 /**
@@ -17,5 +19,7 @@ public:
  */
 
 private:
-
+    int init();
+    ConfigManager();
+    ~ConfigManager();
 };

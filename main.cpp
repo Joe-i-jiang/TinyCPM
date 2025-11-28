@@ -3,8 +3,11 @@
 #endif
 #include "LogManager.hpp"
 #include "AppManager.hpp"
+#include "Common.hpp"
 
-int main(int argc, char *argv[]) {
+
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
     log_info("启动......");
 
 #ifdef _WIN32
@@ -28,6 +31,12 @@ int main(int argc, char *argv[]) {
     // 创建 AppManager，启动线程、窗口和模块
     AppManager app;
     app.Run();
+
+    MSG msg;
+    while (GetMessage(&msg, NULL, 0, 0)) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
 
     // 程序退出前释放互斥量
     ReleaseMutex(hMutex);
